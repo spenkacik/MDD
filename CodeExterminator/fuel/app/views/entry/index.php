@@ -1,4 +1,4 @@
-<h2>Listing Entries</h2>
+<h2>Main Board</h2>
 <br>
 <?php if ($entries): ?>
 <table class="table table-striped">
@@ -46,6 +46,7 @@
 	            window.fbAsyncInit();
 	        } else {
 	            // cancelled
+	            alert('Your Facebook privacy settings are blocking CodeExterminator from logging in.');
 	        }
 	    });
 	}
