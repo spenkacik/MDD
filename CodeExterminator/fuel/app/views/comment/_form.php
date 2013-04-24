@@ -17,18 +17,12 @@
 
 			</div>
 		</div>
-		<!--
-<div class="clearfix">
-			<?php echo Form::label('Entry id', 'entry_id'); ?>
+		<div class="input">
+			<?php echo Form::hidden('entry_id', Uri::segment(4), array('class' => 'span4')); ?>
 
-			<div class="input">
-				<?php echo Form::input('entry_id', Input::post('entry_id', isset($comment) ? $comment->entry_id : ''), array('class' => 'span4')); ?>
-
-			</div>
 		</div>
--->
 		<div class="actions">
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+			<?php echo Form::submit('submit', 'Add comment', array('class' => 'btn btn-success')); ?>
 
 		</div>
 	</fieldset>

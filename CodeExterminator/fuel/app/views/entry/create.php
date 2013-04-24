@@ -1,4 +1,5 @@
-<h2>New Entry</h2>
+<br>
+<h2>New post</h2>
 <br>
 
 <?php echo render('entry/_form'); ?>

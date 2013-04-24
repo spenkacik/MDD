@@ -36,13 +36,11 @@ class Controller_Comment extends Controller_Template
 				$comment = Model_Comment::forge(array(
 					'author' => Input::post('author'),
 					'content' => Input::post('content'),
-					'entry_id' => Uri::segment(4),
+					'entry_id' => Input::post('entry_id'),
 				));
 
 				if ($comment and $comment->save())
 				{
-					Session::set_flash('success', 'Added comment #'.$comment->id.'.');
-
 					Response::redirect('entry/view/'.$comment->entry_id);
 				}
 

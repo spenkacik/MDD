@@ -43,8 +43,6 @@ class Controller_Entry extends Controller_Template
 
 				if ($entry and $entry->save())
 				{
-					Session::set_flash('success', 'Added entry #'.$entry->id.'.');
-
 					Response::redirect('entry');
 				}
 

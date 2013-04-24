@@ -17,8 +17,9 @@
 
 			</div>
 		</div>
+		<br>
 		<div class="actions">
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+			<?php echo Form::submit('submit', 'Create post', array('class' => 'btn btn-success')); ?>
 
 		</div>
 	</fieldset>

@@ -1237,15 +1237,15 @@ select:focus:required:invalid:focus {
 }
 
 .header-bar a {
+	-webkit-transition: background-image .35s ease-in-out;
+	-moz-transition: background-image .35s ease-in-out;
+	-o-transition: background-image .35s ease-in-out;
+	-ms-transition: background-image .35s ease-in-out;
+	transition: background-image .35s ease-in-out;
 	background-image: url('../img/noisy-net.png');
 }
 
 .header-bar a:hover {
-	-webkit-transition: background-image .5s ease-in-out;
-	-moz-transition: background-image .5s ease-in-out;
-	-o-transition: background-image .5s ease-in-out;
-	-ms-transition: background-image .5s ease-in-out;
-	transition: background-image .5s ease-in-out;
 	background-image: url('../img/codeexter-logo-h.png');
 	background-position: center;
 }
@@ -1629,11 +1629,11 @@ table {
 
 .table tbody tr:hover td,
 .table tbody tr:hover th {
-  -webkit-transition: background-color .25s ease-in-out;
-  -moz-transition: background-color .25s ease-in-out;
-  -o-transition: background-color .25s ease-in-out;
-  -ms-transition: background-color .25s ease-in-out;
-  transition: background-color .25s ease-in-out;
+  -webkit-transition: background-color .35s ease-in-out;
+  -moz-transition: background-color .35s ease-in-out;
+  -o-transition: background-color .35s ease-in-out;
+  -ms-transition: background-color .35s ease-in-out;
+  transition: background-color .35s ease-in-out;
   background-color: #fafafa;
 }
 

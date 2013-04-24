@@ -15,4 +15,4 @@
 		</tr>
 	<?php endforeach; ?>
 </table>
-<?php echo Html::anchor('comment/create/entry_id'.$entry->id, 'Add a new comment', array('class' => 'btn btn-success')); ?>
+<?php echo Html::anchor('comment/create/entry_id/'.$entry->id, 'Add a new comment', array('class' => 'btn btn-success')); ?>
