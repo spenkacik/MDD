@@ -21,6 +21,7 @@
 			<?php echo Form::hidden('entry_id', Uri::segment(4), array('class' => 'span4')); ?>
 
 		</div>
+		<br>
 		<div class="actions">
 			<?php echo Form::submit('submit', 'Add comment', array('class' => 'btn btn-success')); ?>
 

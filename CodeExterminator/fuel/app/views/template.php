@@ -14,7 +14,6 @@
 <body style="body { margin: 40px; }">
 	<div class="container">
 		<div class="row">
-			<div class="span16">
 <?php if (Session::get_flash('success')): ?>
 				<div class="alert-message success">
 					<p>
@@ -29,10 +28,9 @@
 					</p>
 				</div>
 <?php endif; ?>
-			</div>
-			<div class="span12">
+		</div>
+		<div class="span12">
 <?php echo $content; ?>
-			</div>
 		</div>
 	</div>
 </body>

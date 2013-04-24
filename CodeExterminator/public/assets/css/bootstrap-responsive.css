@@ -88,6 +88,9 @@
 }
 
 @media (max-width: 480px) {
+  .table td {
+  	width: 100%;
+  }
   .entry-content {
   	display: none;
   }
@@ -164,6 +167,12 @@
   	position: absolute;
   	left: 0px;
   }
+  #inner{
+  	display: none;
+  }
+  #mobile-userbtn {
+  	display: block;
+  }
   .navbar-fixed-top,
   .navbar-fixed-bottom {
     margin-right: -20px;
@@ -194,7 +203,6 @@
   }
   [class*="span"],
   .row-fluid [class*="span"] {
-    display: block;
     float: none;
     width: auto;
     margin-left: 0;
@@ -238,7 +246,6 @@
   }
   [class*="span"] {
     float: left;
-    margin-left: 20px;
   }
   .container,
   .navbar-fixed-top .container,
@@ -474,7 +481,6 @@
   }
   [class*="span"] {
     float: left;
-    margin-left: 30px;
   }
   .container,
   .navbar-fixed-top .container,
