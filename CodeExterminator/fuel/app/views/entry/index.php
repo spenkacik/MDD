@@ -1,11 +1,18 @@
-<h2>Main Board</h2>
 <br>
+<div class="row-fluid">
+	<div class="pull-right">
+		<p id="inner" class="pull-right"><?php echo Html::anchor('', 'Log in'); ?></p>
+		<p class="pull-right btn-full" style="clear: right;"><?php echo Html::anchor('entry/create', 'Submit a new post', array('class' => 'btn btn-success')); ?></p>
+	</div>
+	<h1 style="margin-top: 10px;">Main Board</h1>
+	<p>Click on any post to view comments or edit.</p>
+</div>
 <?php if ($entries): ?>
-<table class="table table-striped">
+<table class="table table-striped hover">
 	<thead>
 		<tr>
 			<th>Title</th>
-			<th>Content</th>
+			<th class="entry-content">Content</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -55,7 +62,7 @@
 	    console.log('Welcome!  Fetching your information from Facebook.... ');
 	    FB.api('/me', function(response) {
 	        console.log('Good to see you, ' + response.name + '.');
-	        document.getElementById('inner').innerHTML = 'Welcome, ' + response.name + '.';
+	        document.getElementById('inner').innerHTML = response.name;
 	    });
 	}
 
@@ -69,25 +76,15 @@
    }(document));
 </script>
 
-<p id="inner"></p>
-<?php foreach ($entries as $entry): ?>		<tr>
-
-			<td><?php echo $entry->title; ?></td>
-			<td><?php echo $entry->content; ?></td>
-			<td>
-				<?php echo Html::anchor('entry/view/'.$entry->id, 'View'); ?> |
-				<?php echo Html::anchor('entry/edit/'.$entry->id, 'Edit'); ?> |
-				<?php echo Html::anchor('entry/delete/'.$entry->id, 'Delete', array('onclick' => "return confirm('Are you sure?')")); ?>
-
-			</td>
-		</tr>
+<?php foreach ($entries as $entry): ?>
+	<tr onclick="document.location = 'entry/view/<?php echo $entry->id ?>';">
+		<td><?php echo $entry->title; ?></td>
+		<td class="entry-content"><?php echo $entry->content; ?></td>
+	</tr>
 <?php endforeach; ?>	</tbody>
 </table>
-
+<p class="btn-mobile"><?php echo Html::anchor('entry/create', 'Submit a new post', array('class' => 'btn btn-success')); ?></p>
 <?php else: ?>
 <p>No Entries.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('entry/create', 'Add new Entry', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>

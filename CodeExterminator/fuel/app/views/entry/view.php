@@ -1,17 +1,18 @@
-<h1>Place branding here</h1>
-<h2>Viewing #<?php echo $entry->id; ?></h2>
-
-<p>
-	<strong>Title:</strong>
-	<?php echo $entry->title; ?></p>
-<p>
-	<strong>Content:</strong>
-	<?php echo $entry->content; ?></p>
-	
+<br>
+<div class="row-fluid">
+	<h1 class="pull-left"><?php echo $entry->title; ?></h1>
+	<div class="btn-box pull-right"></div>
+</div>
+<br>
+<p><?php echo $entry->content; ?></p>
+<?php echo Html::anchor('entry/edit/'.$entry->id, 'Edit this post', array('class' => 'btn btn-success')); ?>
+<hr>
+<h2>Comments</h2>	
+<table class="table table-striped">
 	<?php foreach ($entry->comments as $comment) : ?>
-		<p><?= $comment['author']; ?> : <?= $comment['content']; ?></p>
+		<tr>
+			<td><strong class="comment-username"><?= $comment['author']; ?></strong><br><?= $comment['content']; ?></td>
+		</tr>
 	<?php endforeach; ?>
-	<p><a href="<?php echo uri::base(); ?>comment/create/entry_id/<?php echo $entry->id; ?>">Add Comment</a></p>
-
-<?php echo Html::anchor('entry/edit/'.$entry->id, 'Edit'); ?> |
-<?php echo Html::anchor('entry', 'Back'); ?>
+</table>
+<?php echo Html::anchor('comment/create/entry_id'.$entry->id, 'Add a new comment', array('class' => 'btn btn-success')); ?>
