@@ -9,7 +9,7 @@
 	<?php echo Asset::css('bootstrap-responsive.css'); ?>
 </head>
 <div class="header-bar">
-	<a href="/mdd0413/MDD/codeexterminator/public/entry"><img src="/mdd0413/MDD/CodeExterminator/public/assets/img/codeexter-logo.png" width="350" height="32" alt="logo"></a>
+	<a href="/mdd0413/MDD/codeexterminator/public/entry"><img src="../../assets/img/codeexter-logo.png" width="350" height="32" alt="logo"></a>
 </div>
 <body style="body { margin: 40px; }">
 	<div class="container">
