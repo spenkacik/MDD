@@ -22,5 +22,5 @@
 return array(
 	'driver' => 'SimpleAuth',
 	'verify_multiple_logins' => false,
-	'salt' => 'put_your_salt_here',
+	'salt' => 'cus8m$AL7y34*h',
 );

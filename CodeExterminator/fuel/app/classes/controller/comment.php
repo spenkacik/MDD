@@ -1,9 +1,12 @@
 <?php
-class Controller_Comment extends Controller_Template 
+class Controller_Comment extends Controller_Base 
 {
 
 	public function action_index()
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		$data['comments'] = Model_Comment::find('all');
 		$this->template->title = "Comments";
 		$this->template->content = View::forge('comment/index', $data);
@@ -12,11 +15,14 @@ class Controller_Comment extends Controller_Template
 
 	public function action_view($id = null)
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		is_null($id) and Response::redirect('Comment');
 
 		if ( ! $data['comment'] = Model_Comment::find($id))
 		{
-			Session::set_flash('error', 'Could not find comment #'.$id);
+			console.log('error', 'Could not find comment #'.$id);
 			Response::redirect('Comment');
 		}
 
@@ -27,6 +33,9 @@ class Controller_Comment extends Controller_Template
 
 	public function action_create()
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		if (Input::method() == 'POST')
 		{
 			$val = Model_Comment::validate('create');
@@ -46,12 +55,12 @@ class Controller_Comment extends Controller_Template
 
 				else
 				{
-					Session::set_flash('error', 'Could not save comment.');
+					console.log('error', 'Could not save comment.');
 				}
 			}
 			else
 			{
-				Session::set_flash('error', $val->error());
+				console.log('error', $val->error());
 			}
 		}
 
@@ -62,11 +71,14 @@ class Controller_Comment extends Controller_Template
 
 	public function action_edit($id = null)
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+	
 		is_null($id) and Response::redirect('Comment');
 
 		if ( ! $comment = Model_Comment::find($id))
 		{
-			Session::set_flash('error', 'Could not find comment #'.$id);
+			console.log('error', 'Could not find comment #'.$id);
 			Response::redirect('Comment');
 		}
 
@@ -80,14 +92,14 @@ class Controller_Comment extends Controller_Template
 
 			if ($comment->save())
 			{
-				Session::set_flash('success', 'Updated comment #' . $id);
+				console.log('success', 'Updated comment #' . $id);
 
 				Response::redirect('comment');
 			}
 
 			else
 			{
-				Session::set_flash('error', 'Could not update comment #' . $id);
+				console.log('error', 'Could not update comment #' . $id);
 			}
 		}
 
@@ -99,7 +111,7 @@ class Controller_Comment extends Controller_Template
 				$comment->content = $val->validated('content');
 				$comment->entry_id = $val->validated('entry_id');
 
-				Session::set_flash('error', $val->error());
+				console.log('error', $val->error());
 			}
 
 			$this->template->set_global('comment', $comment, false);
@@ -112,18 +124,21 @@ class Controller_Comment extends Controller_Template
 
 	public function action_delete($id = null)
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+	
 		is_null($id) and Response::redirect('Comment');
 
 		if ($comment = Model_Comment::find($id))
 		{
 			$comment->delete();
 
-			Session::set_flash('success', 'Deleted comment #'.$id);
+			console.log('success', 'Deleted comment #'.$id);
 		}
 
 		else
 		{
-			Session::set_flash('error', 'Could not delete comment #'.$id);
+			console.log('error', 'Could not delete comment #'.$id);
 		}
 
 		Response::redirect('comment');

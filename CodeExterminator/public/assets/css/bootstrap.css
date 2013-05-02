@@ -2619,7 +2619,7 @@ button.close {
   display: inline-block;
   *display: inline;
   padding: 4px 10px 4px;
-  margin-bottom: 0;
+  margin-right: 10px;
   *margin-left: .3em;
   font-size: 13px;
   line-height: 18px;

@@ -1,5 +1,5 @@
 <?php
-class Controller_Entry extends Controller_Template 
+class Controller_Entry extends Controller_Base 
 {
 
 	public function action_index()
@@ -16,7 +16,7 @@ class Controller_Entry extends Controller_Template
 
 		if ( ! $data['entry'] = Model_Entry::find($id))
 		{
-			Session::set_flash('error', 'Could not find entry #'.$id);
+			console.log('error', 'Could not find entry #'.$id);
 			Response::redirect('Entry');
 		}
 				
@@ -30,6 +30,9 @@ class Controller_Entry extends Controller_Template
 
 	public function action_create()
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		if (Input::method() == 'POST')
 		{
 			$val = Model_Entry::validate('create');
@@ -48,12 +51,12 @@ class Controller_Entry extends Controller_Template
 
 				else
 				{
-					Session::set_flash('error', 'Could not save entry.');
+					console.log('error', 'Could not save entry.');
 				}
 			}
 			else
 			{
-				Session::set_flash('error', $val->error());
+				console.log('error', $val->error());
 			}
 		}
 
@@ -64,11 +67,14 @@ class Controller_Entry extends Controller_Template
 
 	public function action_edit($id = null)
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		is_null($id) and Response::redirect('Entry');
 
 		if ( ! $entry = Model_Entry::find($id))
 		{
-			Session::set_flash('error', 'Could not find entry #'.$id);
+			console.log('error', 'Could not find entry #'.$id);
 			Response::redirect('Entry');
 		}
 
@@ -81,14 +87,14 @@ class Controller_Entry extends Controller_Template
 
 			if ($entry->save())
 			{
-				Session::set_flash('success', 'Updated entry #' . $id);
+				console.log('success', 'Updated entry #' . $id);
 
 				Response::redirect('entry');
 			}
 
 			else
 			{
-				Session::set_flash('error', 'Could not update entry #' . $id);
+				console.log('error', 'Could not update entry #' . $id);
 			}
 		}
 
@@ -99,7 +105,7 @@ class Controller_Entry extends Controller_Template
 				$entry->title = $val->validated('title');
 				$entry->content = $val->validated('content');
 
-				Session::set_flash('error', $val->error());
+				console.log('error', $val->error());
 			}
 
 			$this->template->set_global('entry', $entry, false);
@@ -112,18 +118,21 @@ class Controller_Entry extends Controller_Template
 
 	public function action_delete($id = null)
 	{
+		if (!isset($_SESSION['user_id']))
+			return Response::redirect('login');
+		
 		is_null($id) and Response::redirect('Entry');
 
 		if ($entry = Model_Entry::find($id))
 		{
 			$entry->delete();
 
-			Session::set_flash('success', 'Deleted entry #'.$id);
+			console.log('success', 'Deleted entry #'.$id);
 		}
 
 		else
 		{
-			Session::set_flash('error', 'Could not delete entry #'.$id);
+			console.log('error', 'Could not delete entry #'.$id);
 		}
 
 		Response::redirect('entry');
