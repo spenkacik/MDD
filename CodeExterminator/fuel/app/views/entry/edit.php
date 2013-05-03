@@ -4,4 +4,4 @@
 
 <?php echo render('entry/_form'); ?>
 <p>
-	<?php echo Html::anchor('entry', 'Back', array('class' => 'btn btn-inverse')); ?></p>
+	<?php echo Html::anchor('entry/view/'.$entry->id, 'Back', array('class' => 'btn btn-inverse')); ?></p>

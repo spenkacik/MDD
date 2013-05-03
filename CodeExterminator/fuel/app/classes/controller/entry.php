@@ -16,7 +16,6 @@ class Controller_Entry extends Controller_Base
 
 		if ( ! $data['entry'] = Model_Entry::find($id))
 		{
-			console.log('error', 'Could not find entry #'.$id);
 			Response::redirect('Entry');
 		}
 				
@@ -48,15 +47,6 @@ class Controller_Entry extends Controller_Base
 				{
 					Response::redirect('entry');
 				}
-
-				else
-				{
-					console.log('error', 'Could not save entry.');
-				}
-			}
-			else
-			{
-				console.log('error', $val->error());
 			}
 		}
 
@@ -74,7 +64,6 @@ class Controller_Entry extends Controller_Base
 
 		if ( ! $entry = Model_Entry::find($id))
 		{
-			console.log('error', 'Could not find entry #'.$id);
 			Response::redirect('Entry');
 		}
 
@@ -87,15 +76,10 @@ class Controller_Entry extends Controller_Base
 
 			if ($entry->save())
 			{
-				console.log('success', 'Updated entry #' . $id);
 
 				Response::redirect('entry');
 			}
 
-			else
-			{
-				console.log('error', 'Could not update entry #' . $id);
-			}
 		}
 
 		else
@@ -104,8 +88,6 @@ class Controller_Entry extends Controller_Base
 			{
 				$entry->title = $val->validated('title');
 				$entry->content = $val->validated('content');
-
-				console.log('error', $val->error());
 			}
 
 			$this->template->set_global('entry', $entry, false);
@@ -126,13 +108,6 @@ class Controller_Entry extends Controller_Base
 		if ($entry = Model_Entry::find($id))
 		{
 			$entry->delete();
-
-			console.log('success', 'Deleted entry #'.$id);
-		}
-
-		else
-		{
-			console.log('error', 'Could not delete entry #'.$id);
 		}
 
 		Response::redirect('entry');
